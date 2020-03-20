@@ -4,6 +4,18 @@
 
 对代码有疑问，[参考](https://github.com/stevekeol/zhurong-web)
 
+### 使用
+```
+//clone项目
+git clone https://github.com/stevekeol/rrg-pro
+
+//安装依赖项
+npm install
+
+//启动项目
+npm start
+```
+
 ### 技术栈
  + 语言框架: [react]();
  + 基于的脚手架: [create-react-app]();
