@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, WingBlank, WhiteSpace, NavBar, Button } from "antd-mobile";
 import { withRouter } from "react-router-dom";
+import { Card, WingBlank, WhiteSpace, NavBar, Button } from "antd-mobile";
 
 @withRouter
 class ContactInfo extends React.Component {
@@ -9,26 +9,20 @@ class ContactInfo extends React.Component {
     this.state = {};
   }
 
-  onNavigateTo(path) {
-    this.props.history.push(path);
-  }
-
   render() {
     return (
       <div>
-        <NavBar mode="dark">物资对接</NavBar>
+        <NavBar mode="dark">React源码架构</NavBar>
         <WingBlank size="lg">
           <WhiteSpace size="lg" />
           <Card>
-            <Card.Header title={<h3>打通您和医院的对接</h3>} />
+            <Card.Header title={<h3>撒旦</h3>} />
             <Card.Body>
               <p>
-                我们为捐助者和医院提供一个物资快速匹配的平台。
-                简单填写你的物资需求或捐助意愿，开始你的匹配。
+                基于react,redux,create-react-app,react-app-rewired的多人协作版react的源码架构
               </p>
-              <Button type="primary" onClick={this.onNavigateTo.bind(this, '/search')}>开始捐助</Button>
+              <Button type="primary" onClick={() => this.props.history.push('search')}>开始尝试</Button>
               <WhiteSpace />
-              {/*<Button type="warning">求助物资</Button>*/}
               <WhiteSpace />
             </Card.Body>
           </Card>
@@ -40,3 +34,11 @@ class ContactInfo extends React.Component {
 }
 
 export default ContactInfo;
+
+// 1. construtor中, this.navigateTo = this.navigateTo.bind(this); //因此可省去
+// 2.箭头函数自动绑定this到当前组件的作用域(create-react-app默认开启该语法);
+//因此可以省去在constructor中给方法绑定this（代码量增多）
+// navigateTo = () => {
+//   this.props.history.push('search');
+// }
+// 3. 为了便于理解，写成上述代码的方式，直接在onlcick的函数中用箭头函数（每次render时，都需要重新绑定this到该实例，因此会影响性能）

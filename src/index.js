@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "antd-mobile/dist/antd-mobile.css"; //(新增)
-import "ant-design-icons/dist/anticons.min.css"; //(新增)电话地址等图标库
-import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+
+import "./index.css";
+
+import "antd-mobile/dist/antd-mobile.css"; //(新增)
+import "ant-design-icons/dist/anticons.min.css"; //(新增)电话地址等图标库
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

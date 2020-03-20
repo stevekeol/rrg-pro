@@ -1,6 +1,5 @@
 import { TabBar } from "antd-mobile";
 import React from "react";
-import "./style.css";
 import Match from "../match";
 import DemandsMap from "../demandsMap";
 import { withRouter } from "react-router-dom";
@@ -45,6 +44,7 @@ class MainTabBar extends React.Component {
     //return后面加上括号的原因: babel在将.jsx编译为.js的过程中，自动在每行后面加; 因此会导致
     return (
       <div
+        //根据组件状态切换样式(内联样式)
         style={
           this.state.fullScreen
             ? { position: "fixed", height: "100%", width: "100%", top: 0 }
