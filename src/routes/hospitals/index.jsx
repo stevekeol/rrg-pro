@@ -20,6 +20,7 @@ import { hospitalActions } from "../../redux/hospitals";
 import { bindActionCreators } from "redux";
 import copy from "copy-to-clipboard";
 import { demandActions } from "../../redux/demand";
+import { withRouter } from "react-router-dom";
 
 const PAGE_SIZE = 10;
 
@@ -36,6 +37,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 class Hospitals extends React.Component {
   constructor(props) {
@@ -168,7 +170,7 @@ class Hospitals extends React.Component {
         <NavBar
           icon={<Icon type="left" />}
           onLeftClick={() => {
-            this.props.history.push("/search");
+            this.props.history.push("/");
           }}
           mode="dark"
         >

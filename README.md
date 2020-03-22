@@ -33,5 +33,9 @@ npm start
  + 按需导入js和css代码插件: [babel-plugin-import]();
  + 装饰器插件: [transform-decorators-legacy]()
 
-### notice
+### 关注的技术点
 
++ [Tabbar的实现逻辑](https://mobile.ant.design/components/tab-bar-cn/#components-tab-bar-demo-basic)
++ Tabbar仅仅在home页面中设置的bar的组件页面中显示，其余更深的页面自动隐藏！??
++ ```<Route path="/hospitals/:id" component={Item} />```注意该写法！
++ 

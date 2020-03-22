@@ -1,8 +1,10 @@
-import { TabBar } from "antd-mobile";
 import React from "react";
-import Match from "../match";
-import DemandsMap from "../demandsMap";
 import { withRouter } from "react-router-dom";
+import { TabBar } from "antd-mobile";
+
+import Match from "../match";
+import Hospitals from "../hospitals";
+import Item from "../item";
 
 //可将路由参数传入到this.props中
 @withRouter
@@ -19,7 +21,7 @@ class MainTabBar extends React.Component {
     const { match = {} } = this.props;
     const { params = {} } = match;
     const { tab = "" } = params;
-    const tabs = ["match", "records", "contact"];
+    const tabs = ["match", "item"];
     if (!!tab && tabs.includes(tab)) {
       this.setState({ selectedTab: tab });
     }
@@ -44,7 +46,6 @@ class MainTabBar extends React.Component {
     //return后面加上括号的原因: babel在将.jsx编译为.js的过程中，自动在每行后面加; 因此会导致
     return (
       <div
-        //根据组件状态切换样式(内联样式)
         style={
           this.state.fullScreen
             ? { position: "fixed", height: "100%", width: "100%", top: 0 }
@@ -82,10 +83,9 @@ class MainTabBar extends React.Component {
             }
             selected={this.state.selectedTab === "match"}
             onPress={() => {
-              this.props.history.replace(`/match`);
               this.setState({ selectedTab: "match" });
+              // this.props.history.replace(`/match`);
             }}
-            data-seed="logId"
           >
             {this.renderContent(<Match />)}
           </TabBar.Item>
@@ -110,16 +110,16 @@ class MainTabBar extends React.Component {
                 }}
               />
             }
-            title="需求地图"
-            key="demandsMap"
-            selected={this.state.selectedTab === "demandsMap"}
+            title="ITEM测试"
+            key="item"
+            selected={this.state.selectedTab === "item"}
             onPress={() => {
-              this.props.history.replace(`/demandsMap`);
-              this.setState({selectedTab: "demandsMap"});
+              this.setState({selectedTab: "item"});
+              //此处不能有下面这行代码: 
+              // this.props.history.replace(`/item`);
             }}
-            data-seed="logId1"
           >
-            {this.renderContent(<DemandsMap />)}
+            {this.renderContent(<Hospitals />)}
           </TabBar.Item>
         </TabBar>
       </div>

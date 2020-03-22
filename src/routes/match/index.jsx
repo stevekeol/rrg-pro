@@ -16,7 +16,7 @@ class ContactInfo extends React.Component {
         <WingBlank size="lg">
           <WhiteSpace size="lg" />
           <Card>
-            <Card.Header title={<h3>撒旦</h3>} />
+            <Card.Header title={<h3>github/stevekeol</h3>} />
             <Card.Body>
               <p>
                 基于react,redux,create-react-app,react-app-rewired的多人协作版react的源码架构

@@ -101,7 +101,6 @@ const CustomChildren = props => (
     style={{ backgroundColor: "#fff", paddingLeft: 15 }}
   >
     <div
-      className="test"
       style={{ display: "flex", height: "45px", lineHeight: "45px" }}
     >
       <div
