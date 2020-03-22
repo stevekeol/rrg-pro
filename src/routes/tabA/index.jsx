@@ -21,7 +21,7 @@ class ContactInfo extends React.Component {
               <p>
                 基于react,redux,create-react-app,react-app-rewired的多人协作版react的源码架构
               </p>
-              <Button type="primary" onClick={() => this.props.history.push('search')}>开始尝试</Button>
+              <Button type="primary" onClick={() => this.props.history.push('/')}>开始尝试</Button>
               <WhiteSpace />
               <WhiteSpace />
             </Card.Body>

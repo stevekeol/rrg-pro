@@ -2,30 +2,20 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { TabBar } from "antd-mobile";
 
-import Match from "../match";
-import Hospitals from "../hospitals";
-import Item from "../item";
+import TabA from "../tabA";
+import TabB from "../tabB";
 
 //可将路由参数传入到this.props中
 @withRouter
-class MainTabBar extends React.Component {
+//Home组件主要是提供多tabbar入口，无其它组件内容;
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: "match",
-      hidden: false,
-      fullScreen: true
+      selectedTab: "tabA"
     };
   }
-  componentDidMount() {
-    const { match = {} } = this.props;
-    const { params = {} } = match;
-    const { tab = "" } = params;
-    const tabs = ["match", "item"];
-    if (!!tab && tabs.includes(tab)) {
-      this.setState({ selectedTab: tab });
-    }
-  }
+  componentDidMount() {}
 
   renderContent(content) {
     return (
@@ -41,26 +31,19 @@ class MainTabBar extends React.Component {
     );
   }
 
-
   render() {
     //return后面加上括号的原因: babel在将.jsx编译为.js的过程中，自动在每行后面加; 因此会导致
     return (
-      <div
-        style={
-          this.state.fullScreen
-            ? { position: "fixed", height: "100%", width: "100%", top: 0 }
-            : { height: 400 }
-        }
-      >
+      <div style={{ position: "fixed", height: "100%", width: "100%", top: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
-          hidden={this.state.hidden}
+          hidden={false}
         >
           <TabBar.Item
-            title="物资对接"
-            key="match"
+            title="TabA"
+            key="tabA"
             icon={
               <div
                 style={{
@@ -81,13 +64,12 @@ class MainTabBar extends React.Component {
                 }}
               />
             }
-            selected={this.state.selectedTab === "match"}
+            selected={this.state.selectedTab === "tabA"}
             onPress={() => {
-              this.setState({ selectedTab: "match" });
-              // this.props.history.replace(`/match`);
+              this.setState({ selectedTab: "tabA" });
             }}
           >
-            {this.renderContent(<Match />)}
+            {this.renderContent(<TabA />)}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -110,16 +92,16 @@ class MainTabBar extends React.Component {
                 }}
               />
             }
-            title="ITEM测试"
+            title="TabB"
             key="item"
-            selected={this.state.selectedTab === "item"}
+            selected={this.state.selectedTab === "tabB"}
             onPress={() => {
-              this.setState({selectedTab: "item"});
-              //此处不能有下面这行代码: 
+              this.setState({selectedTab: "tabB"});
+              //此处不能有下面这行代码: 否则路由到item页面，而非在当前页面内嵌item，因而会不显示tabbar
               // this.props.history.replace(`/item`);
             }}
           >
-            {this.renderContent(<Hospitals />)}
+            {this.renderContent(<TabB />)}
           </TabBar.Item>
         </TabBar>
       </div>
@@ -127,4 +109,4 @@ class MainTabBar extends React.Component {
   }
 }
 
-export default MainTabBar;
+export default Home;
